@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ContractMapper">
+  <resultMap id="BaseResultMap" type="others.Contract">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="contract_num" jdbcType="VARCHAR" property="contractNum" />
+    <result column="Partner" jdbcType="VARCHAR" property="partner" />
+    <result column="pledge_applicant" jdbcType="VARCHAR" property="pledgeApplicant" />
+    <result column="Amount" jdbcType="VARCHAR" property="amount" />
+    <result column="enter_time" jdbcType="VARCHAR" property="enterTime" />
+    <result column="signature_time" jdbcType="VARCHAR" property="signatureTime" />
+    <result column="credential_issuer" jdbcType="VARCHAR" property="credentialIssuer" />
+    <result column="issue_certificate" jdbcType="VARCHAR" property="issueCertificate" />
+    <result column="days_payable_outstanding" jdbcType="VARCHAR" property="daysPayableOutstanding" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="contract_type" jdbcType="VARCHAR" property="contractType" />
+    <result column="outbound_order" jdbcType="VARCHAR" property="outboundOrder" />
+    <result column="godown_entry" jdbcType="VARCHAR" property="godownEntry" />
+    <result column="contract" jdbcType="VARCHAR" property="contract" />
+    <result column="certificate_contract_id" jdbcType="INTEGER" property="certificateContractId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, contract_num, Partner, pledge_applicant, Amount, enter_time, signature_time, 
+    credential_issuer, issue_certificate, days_payable_outstanding, status, contract_type, 
+    outbound_order, godown_entry, contract, certificate_contract_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contract
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from contract
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="others.Contract">
+    insert into contract (id, contract_num, Partner, 
+      pledge_applicant, Amount, enter_time, 
+      signature_time, credential_issuer, issue_certificate, 
+      days_payable_outstanding, status, contract_type, 
+      outbound_order, godown_entry, contract, 
+      certificate_contract_id)
+    values (#{id,jdbcType=INTEGER}, #{contractNum,jdbcType=VARCHAR}, #{partner,jdbcType=VARCHAR}, 
+      #{pledgeApplicant,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, #{enterTime,jdbcType=VARCHAR}, 
+      #{signatureTime,jdbcType=VARCHAR}, #{credentialIssuer,jdbcType=VARCHAR}, #{issueCertificate,jdbcType=VARCHAR}, 
+      #{daysPayableOutstanding,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{contractType,jdbcType=VARCHAR}, 
+      #{outboundOrder,jdbcType=VARCHAR}, #{godownEntry,jdbcType=VARCHAR}, #{contract,jdbcType=VARCHAR}, 
+      #{certificateContractId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="others.Contract">
+    insert into contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="contractNum != null">
+        contract_num,
+      </if>
+      <if test="partner != null">
+        Partner,
+      </if>
+      <if test="pledgeApplicant != null">
+        pledge_applicant,
+      </if>
+      <if test="amount != null">
+        Amount,
+      </if>
+      <if test="enterTime != null">
+        enter_time,
+      </if>
+      <if test="signatureTime != null">
+        signature_time,
+      </if>
+      <if test="credentialIssuer != null">
+        credential_issuer,
+      </if>
+      <if test="issueCertificate != null">
+        issue_certificate,
+      </if>
+      <if test="daysPayableOutstanding != null">
+        days_payable_outstanding,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="contractType != null">
+        contract_type,
+      </if>
+      <if test="outboundOrder != null">
+        outbound_order,
+      </if>
+      <if test="godownEntry != null">
+        godown_entry,
+      </if>
+      <if test="contract != null">
+        contract,
+      </if>
+      <if test="certificateContractId != null">
+        certificate_contract_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="contractNum != null">
+        #{contractNum,jdbcType=VARCHAR},
+      </if>
+      <if test="partner != null">
+        #{partner,jdbcType=VARCHAR},
+      </if>
+      <if test="pledgeApplicant != null">
+        #{pledgeApplicant,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="enterTime != null">
+        #{enterTime,jdbcType=VARCHAR},
+      </if>
+      <if test="signatureTime != null">
+        #{signatureTime,jdbcType=VARCHAR},
+      </if>
+      <if test="credentialIssuer != null">
+        #{credentialIssuer,jdbcType=VARCHAR},
+      </if>
+      <if test="issueCertificate != null">
+        #{issueCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="daysPayableOutstanding != null">
+        #{daysPayableOutstanding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null">
+        #{contractType,jdbcType=VARCHAR},
+      </if>
+      <if test="outboundOrder != null">
+        #{outboundOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="godownEntry != null">
+        #{godownEntry,jdbcType=VARCHAR},
+      </if>
+      <if test="contract != null">
+        #{contract,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateContractId != null">
+        #{certificateContractId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="others.Contract">
+    update contract
+    <set>
+      <if test="contractNum != null">
+        contract_num = #{contractNum,jdbcType=VARCHAR},
+      </if>
+      <if test="partner != null">
+        Partner = #{partner,jdbcType=VARCHAR},
+      </if>
+      <if test="pledgeApplicant != null">
+        pledge_applicant = #{pledgeApplicant,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        Amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="enterTime != null">
+        enter_time = #{enterTime,jdbcType=VARCHAR},
+      </if>
+      <if test="signatureTime != null">
+        signature_time = #{signatureTime,jdbcType=VARCHAR},
+      </if>
+      <if test="credentialIssuer != null">
+        credential_issuer = #{credentialIssuer,jdbcType=VARCHAR},
+      </if>
+      <if test="issueCertificate != null">
+        issue_certificate = #{issueCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="daysPayableOutstanding != null">
+        days_payable_outstanding = #{daysPayableOutstanding,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null">
+        contract_type = #{contractType,jdbcType=VARCHAR},
+      </if>
+      <if test="outboundOrder != null">
+        outbound_order = #{outboundOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="godownEntry != null">
+        godown_entry = #{godownEntry,jdbcType=VARCHAR},
+      </if>
+      <if test="contract != null">
+        contract = #{contract,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateContractId != null">
+        certificate_contract_id = #{certificateContractId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="others.Contract">
+    update contract
+    set contract_num = #{contractNum,jdbcType=VARCHAR},
+      Partner = #{partner,jdbcType=VARCHAR},
+      pledge_applicant = #{pledgeApplicant,jdbcType=VARCHAR},
+      Amount = #{amount,jdbcType=VARCHAR},
+      enter_time = #{enterTime,jdbcType=VARCHAR},
+      signature_time = #{signatureTime,jdbcType=VARCHAR},
+      credential_issuer = #{credentialIssuer,jdbcType=VARCHAR},
+      issue_certificate = #{issueCertificate,jdbcType=VARCHAR},
+      days_payable_outstanding = #{daysPayableOutstanding,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      contract_type = #{contractType,jdbcType=VARCHAR},
+      outbound_order = #{outboundOrder,jdbcType=VARCHAR},
+      godown_entry = #{godownEntry,jdbcType=VARCHAR},
+      contract = #{contract,jdbcType=VARCHAR},
+      certificate_contract_id = #{certificateContractId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
